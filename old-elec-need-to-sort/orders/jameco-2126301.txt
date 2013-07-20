@@ -1,0 +1,7 @@
+OPTO,NPN TRANS,2-CH INTERRUPTR
+SW,1.2Vf@20mA,30Vb
+
+
+Part no. 2126301
+Manufacturer	ISOCOM COMPONENTS
+Manufacturer no.	ISTS150

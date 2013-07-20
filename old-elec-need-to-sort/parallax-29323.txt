@@ -1,0 +1,26 @@
+HMC6352 Compass Module - Discontinued
+
+									
+Item code	29323
+Stock	0
+Price	$39.99
+ 	
+
+ 
+The HMC6352 Compass Module is fully integrated and combines 2-axis magneto-resistive sensors with the required analog, digital, microprocessor and algorithms required for heading computation.
+
+The HMC6352 Compass Module provides a direct heading angle and includes internal calibration algorithms within its firmware. Stray magnetic field protection and temperature compensation are also included.
+
+Features:
+
+Small package size
+Complete solution including compass firmware
+Stray magnetic field protection
+Temperature compensation
+Internal calibration algorithm
+Key Specifications:
+
+Power requirements: 2.7 VDC to 5.2 VDC @ ~2 mA (@ 5V)
+Communication: 2-Wire I2C Serial Interface (100 kbps max)
+Dimensions: 0.46 x 0.59 x 0.54 in (11.7 x 14.9 x 13.65 mm)
+Operating temp range: -4°F to +158°F (-20°C to +70°C)

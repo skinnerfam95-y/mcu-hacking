@@ -1,0 +1,261 @@
+Logic Level Converter
+
+sku: BOB-08745  
+
+Description: If you've ever tried to connect a 3.3V device to a 5V system, you know what a challenge it can be. The SparkFun logic level converter is a small device that safely steps down 5V signals to 3.3V and steps up 3.3V to 5V. This level converter also works with 2.8V and 1.8V devices. Each level converter has the capability of converting 4 pins on the high side to 4 pins on the low side. Two inputs and two outputs are provided for each side.
+
+Bread board friendly! Can be used with normal serial, I2C, SPI, and any other digital signal. Does not work with an analog signal.
+
+The level converter is very easy to use. The board needs to be powered from the two voltages sources (high voltage and low voltage) that your system is using. High voltage (5V for example) to the 'HV' pin, low voltage (2.8V for example) to 'LV', and ground from the system to the 'GND' pin.
+
+Pins are labeled as Inputs and Outputs. These are relative to the board. A digital one going into the RXI pin on the 5V side will show up on the RXO pin on the 3.3V side as 3.3V. A digital one going into the TXI pin on the 3.3V side will show up on the TXO pin on the 5V side as 5V.
+
+Dale | December 12, 2008 at 10:49 AM9
+While I am a novice, I am learning & appreciate feedback if what I am writing is incorrect.
+
+The Tx lines are bidirectional. HUGE selling point & important for people using protocols like I2C. The Rx lines are unidirectional; only 5 to 3.3v
+
+The Rx lines are not designed well for two reasons:
+
+a) The resistors to generate a 3.3v output low side should be 10k R1 and ~20k R2. As is, the two 10k resistors split the voltage 50% resulting in approx 2.5v low side. This is outside the acceptable window for many 3.3v part like the LIS302DL sold on this site.
+
+b) The two grounds on the breakout are common to each other. If the two ground were NOT common, then a user likely myself could be another resistor in series with the R2 on the breakout to adjust the low output voltage on each channel. Since however, they are common this is not easily possible because now current can flow between channels between the internal R2 and an external R2 in series.
+
+I recommend posting portions of all the above for the benefit of your customers. And consider 2 for a future rev of the breakout.
+
+
+cyberthom | February 4, 2009 at 3:28 PM2
+thanks for the explanation.. this is exactly whats going on.. i was wondering about the 50% split on RX the lines myself..
+
+and just to clarify - you can use one I2C device with one of these.. both, SDA and SCL lines have to be wired up using the two TX lines of this board..
+
+Ianworld | May 25, 2011 at 7:41 AM1
+Somebody should second check me on this but I think the board I just got corrected this. The RX lines now seem to have 10k and 20k resistors so they level shift appropriately. It would make sense as I'm positive this is a new batch of boards.
+
+Syvwlch | August 16, 2008 at 8:23 AM4
+Hi, and thanks for all the good work.
+
+One question on this logic level converter:
+
+If I want to use this to connect a 5V processor to a 3.3V I2C sensor, can I connect one pin of the processor to the SDA pin of the sensor with both a TXI-TXO and a RXO-RXI line in parallel, and then switch that processor pin from input to ouput as required?
+
+If not, what do you recommend I do?
+
+
+Quazar | September 30, 2008 at 11:41 AM2
+I think you can do that with this board. You'll need to use the two "TX" channels, (the ones with the MOSFETs), since I2C requires bidirectional I/O for both lines. There is a good appnote on the subject here.
+
+okie | October 20, 2008 at 3:34 PM2
+If you're working with up above about 1MHz clocks, watch out for those resistor dividers. They'll attenuate your signal.
+
+Dale | December 12, 2008 at 10:54 AM2
+The example table in the breakout schematic has a column LV. This leads the reads to believe that LV has some affect on the Max output. It doesn't. Its not even connected to the circuit. I recommend removing that column for clarity.
+
+bengineerd | April 20, 2009 at 12:52 PM2
+Why not just make a breakout board for the TI TXB0108 and/or TXS0108E? 8 Bidirectional level shifting lines, and the chips are only $2 each.
+
+
+saccade | March 7, 2011 at 9:23 PM *3
+What he said. I just used a TXB0104 on a project to connect a 3.3V mbed to some 5V devices, and it worked great. Each channel can be used for either input or output - it figures out the correct behavior on the fly.
+
+The chip isn't available as a DIP though, so having one on a breakout board for prototyping would be great.
+
+MattTheGeek | May 4, 2009 at 12:38 AM2
+Works great, But Really small and easy to lose! (But that's just me)
+
+KC5CQW | June 11, 2010 at 9:04 PM2
+Works great with the BOB-00199 and a DB-25 for a USB to Serial break out box. The DB-25 alowed me access to all BOB-00199 and BOB-08745 ports. I now have Lo/Hi voltage TTL, GPIO's, serial, reset/suspend and 3.3v/5v all on the DB-25 jack.
+
+You wont find a USB to RS-232 converter in any big box store that can give this kind of flexibility.
+
+I would have liked two through holes (redundant) for each connection. This would give a little bit more flexibility in some situations. Not a big deal and most of the time this wouldn't be needed, just nice to have...
+
+Member131539 | April 13, 2011 at 4:41 PM2
+I'd love to see a Ti TXS0104/108 breakout variant of this board...
+
+gke | April 15, 2009 at 5:40 PM1
+Neat product.
+
+Perhaps add a 3.3V regulator footprint. I am using the board between a LOCOSYS GPS unit and a 5V PIC and currently have two diodes to get about 3.8V from the 5V line - not ideal.
+
+Bohica | April 24, 2009 at 2:50 PM1
+So could I use this to boost the 3.3V digital out from an Arduino mini pro to 5V and then drive the TTL in on the SN754410 h-bridge?
+
+AretCarlsen | June 5, 2009 at 9:52 AM1
+The description is inaccurate. It reads, "A digital one going into the RXI pin on the 5V side will show up on the RXO pin on the 3.3V side as 3.3V." In fact, a digital one going into the RXI pin on the 5V side will show up on the RXO pin on the 3.3V side as 2.5V.
+
+SeanReynoldsCS | December 1, 2009 at 6:50 AM1
+I'd really like to use this to Power a 3.3v circuit. I'm guessing it will do that just fine, but is there some kinda current limit on this I should be aware of?
+
+Everything on the page talks about communications but I really just care about power.
+
+Would this work for that too?
+
+
+Reed | December 14, 2009 at 6:17 PM1
+This board has no provisions to provide any sort of power to a circuit. It is designated for communications purposes and in order to even do that it requires voltages to already be present in order to function. The parts on-board are mosfets not Voltage-regulators.
+
+FlyByPC | January 5, 2010 at 8:19 PM1
+This board is a great example of why SparkFun just "gets it." You just know they've come across this problem themselves, got frustrated with having to solve it multiple times, and came up with a solution. Rock on, guys!
+
+RGFTech | January 14, 2010 at 1:24 PM1
+There seems to be enough question around the subject, since the tool is used mostly for I2C and UART, how about a simple couple of schematics showing the I2C connection where the bi-directional lines must be used along with another showing a connection between two UARTS (on microprocessors) and finally between a 3.3v microcontroller and teh RS232 interface to a PC/USB?
+
+Can I assume that the board has to be viewed from the perspective of the low voltage side of the interface you are trying to make? So the TXI will hit the 3.3v TX pin while the TXO will hit the RX pin on the 5v device? Sorry for not being bright enough to figure that out on my own.
+
+ehubin | January 20, 2010 at 6:42 AM1
+I bought two of these to convert levels between a 5v Arduino (arduimu) and a PNI micromag 3.
+
+I did initially used the ports as suggested in the images above and it didn't work. After some investigation, it turned out the level of signals from Arduino(5V) toward the micromag 93.3V) where at 2.5 instead of 3.3V. I managed to get it to work by hijacking one of the TXO connections on Arduino side to convey the Reset signal. Other SPI signals (MOSI,SCK) where fine at 2.5V.
+
+@Sparkfun, Would be good to highlight this in the Product info as already suggested above. If ever you build a new series of converter, might be good to tune the Voltage divider to effectively output 3.3v when supplied with 5V on the High side.
+
+shomnat | February 7, 2010 at 2:35 PM1
+Hello ,
+
+Can this be used to interface the GM862 uart (2.8V CMOS) with an msp430 uart (3.3V) ?
+
+awesomeduck | February 11, 2010 at 10:22 AM1
+How is this different than a 74LVC244 Buffer/Line Driver?
+
+elif | April 19, 2010 at 10:02 AM1
+Having trouble. Trying to shift 1.8V signal to 5.0V.
+
+Problem is, when I wire the 1.8V + GND and the 5.0V + GND, the TXI pins go high to 1.8V, and the TXO's go high to 5.0V, even though nothing is attached to the TXI pins (TXO's are attached to signal pin of NPN collecting from the 5.0V supply)
+
+Any help would be appreciated.
+
+My 5.0V supply is 1000mA, and the 1.8V is ~ 150mA
+
+this is the schematic of what i'm doing: http://bit.ly/b4wghF
+
+
+garbear | August 2, 2011 at 2:53 AM *1
+I seem to have the exact same problem. I wonder if anyone has experienced this also? help/explanation would be greatly appreciated!
+
+EDIT: Nevermind. I should have scrolled down literally 1/4 page to gorg0th's explanation =)
+
+gorg0th | July 8, 2010 at 2:06 PM1
+Hi Elif,
+
+The problem you're encountering, (though it's been a while so I bet you've figured it out already), is that the TX lines are pulled high, (through pull-up resistors on the board), anytime that nothing is acting to pull them low. Floating inputs will go high because of this, which is the intended behavior. Pulling the TX-line low on either side will cause the other side to properly transition to a low state.
+
+Awesomeduck,
+
+The device you refer to only passes the signal in one direction, from the 'A' side to the 'Y' side, so it wouldn't be useful to communicate information back the other way. Applying a signal to the 'Y' output side does not affect the state of the 'A' input associated with it.
+
+Have a great day everyone!
+
+~gorg0th
+
+tImMy | July 20, 2010 at 11:58 PM1
+I am using multiple 3.3v i2c devices(slaves) connected to an arduino(master). Do i need multiple level converters or can I put one level converter between the arduino and the devices?
+
+FlyByPC | October 30, 2010 at 11:44 AM1
+Finally ordered some of these, and tested the first one today. This thing is great -- a real 3.3V 5V "Easy Button." One minor quibble is the pads could be made a bit larger for ease of soldering -- but I managed okay anyway. Definitely recommended.
+
+udawatabhimanyu4 | November 17, 2010 at 11:30 PM1
+The Schematic Document shows in the table that 5V -> 3.3V = 2.5V.
+Will this voltage be enough for interfacing an xBee with Arduino?
+For Level shifting on Rx and Tx lines.
+
+
+SgtJake | May 19, 2011 at 1:18 AM1
+udawatabhimanyu4,
+
+Did you ever get your question answered. I'm about ready to test the samething.
+
+
+udawatabhimanyu4 | July 17, 2011 at 8:29 AM1
+No... I went on with the breakout Board for xBee. But then, if you have an Uno, then you dont even need any level shifting. It has 3v3 built-in!
+
+Ido971 | November 25, 2010 at 9:58 PM1
+Hi everyone
+I would like to convert sevral signal and clock from 5v to 2.5v is this board woul do the job.I mean the schematic show a split rqtio of 2.
+
+sycophantic | December 3, 2010 at 9:41 PM1
+Works perfectly. I used it to convert 3.3v TTL to 5v TTL to interface a GPS with my D90 camera. For those who are interested: http://www.flickr.com/photos/grink/sets/72157625472950584/with/5230195801/
+
+jonh | December 13, 2010 at 6:24 PM1
+I tried using one of these to convert from 5V (atmega8) to 3.3V (SD card). The SD card almost replied, but was giving back 7-bit "bytes". We think the problem was that the 2.5V "high" level wasn't high enough for the SD cards we tested with. Replacing the RX channels with 3:2 resistor ladders (instead of the 1:1 ladder included on this device) cleared up the problem.
+That means the only thing I ended up using from this device was a single TX channel, which would have been easier to do with discrete components.
+
+Member202380 | February 10, 2011 at 10:42 PM1
+Hello! Could someone explain what the HV and LV pins are for? I can't figure out any use other than for probing the input and output voltages for verification purposes. Shouldn't they simply be pulled to TXI and TXO voltages?
+
+Also, I'm not sure how the mosfets do the voltage step-up. Can someone explain that as well? I would very much appreciate it - I'm fairly new to circuit design. Thanks!
+
+
+breadstick | February 16, 2011 at 8:01 PM1
+The HV and LV pins are what cause the MOSFET to work. Essentially, the input signal controls how much current flows between HV and TXO. In order for the converter to work, LV needs to be connected to the logic high voltage (most likely vcc) of your lower voltage circuit, and the HV pin needs to be connected to the logic high voltage of your higher voltage circuit (also most likely that circuit's vcc)
+
+Member185979 | February 14, 2011 at 7:30 AM1
+Hi, I want to convert 5V PWM output of one sensor to 3.3V PWM for interfacing with MSP430 ? Will it work ?
+
+Thank you, Vatsal
+
+
+breadstick | February 16, 2011 at 7:58 PM1
+It should, just be sure to use the TX channels with the mosfets, in order to get your PWM highs to be exactly your LV.
+
+Questioner | February 17, 2011 at 8:16 PM *1
+Sparkfun: Nice board. You might want to consider putting a square solder pad on Pin #1 so that someone can tell which pins are #1.
+
+esm | February 19, 2011 at 1:59 PM *1
+I'll have to second a few other comments here: the 10k/10k divider on the RX lines had me pulling my hair out for a little while with a touchy SD card (one card worked, even though 2.5V was out of spec, but another card didn't). Suggestion for a future revision: use FETs for all four lanes. Now, you've got a four-port bi-directional level shifter.
+
+Good example (but skip the voltage regulator):
+
+http://www.rocketnumbernine.com/2009/04/10/5v-33v-bidirectional-level-converter/
+http://www.rocketnumbernine.com/2009/06/13/bidirectional-level-converter-pcb/
+
+bendhoward | March 30, 2011 at 12:45 AM1
+Yes! Definitely needs 4 FETS.
+
+I had a miserable time with this thing because the voltage divider line may only work with devices that do not have RX lines pulled up!
+
+williams | February 21, 2011 at 2:53 PM1
+The GNDs are common on both sides. Does this mean you can't have two seperate supplies on each side? Or, can you have 3v side seperate, but just using the 5v gnd? tia
+
+Fabien Royer | March 17, 2011 at 1:35 AM1
+I've been experiencing communication issues with this logic-level converter used with 16 bit SPI messages @ frequencies > 2MHz between a 3.3v micro-controller and a 5v chip.
+
+What is the maximum speed achievable with this board?
+
+
+Joe Knapp | July 14, 2011 at 7:13 PM *1
+The input capacitance of the FET used is 55pF max, 40pF typical, so perhaps the 10K resistor (time constant about 0.5 microsecond) is what's limiting around 2 MHz?
+
+http://www.datasheetcatalog.org/datasheet/siemens/BSS138.pdf
+
+bikegeek | June 9, 2011 at 7:22 PM1
+Is this in the sparkfun eagle library? If so, can't find it.
+
+jellis00 | June 22, 2011 at 7:12 PM1
+Can anyone tell me the dimensions for the row spacing and pin spacing for this device? I would like to attach it to our main circuit board with two rows of pin headers, but need to know the dimensions for the level converter board pin spacings and row spacing. Thanks for help in advance! Also has anyone confirmed that the latest boards changed the resistors per one of the posts so that it will work for 5v to 3.3 v conversions?
+
+trandi | June 23, 2011 at 3:03 PM1
+Really great product !
+
+I've been using it in quite a few different projects, like here where I needed to interface the 9DOF IMU with a 5V Arduino:
+
+http://trandi.wordpress.com/2011/01/03/razor-9dof-imu-i2c-to-arduino/
+
+Thank you guys for a great product as usually !
+
+dan
+
+Member212902 | July 22, 2011 at 11:01 PM1
+I will add to the chorus of people looking for FETs in both directions. I've been trying to use this to pair an Arduino with the Sparkfun GM682 eval board. I couldn't get it to work until I used the TXO/TXI pins to send output signals from the Arduino to the eval board (in other words, HV to LV on TXO/TXI pins, opposite to what is shown in the product photos).
+
+Definitely a great product - just needs improvement!
+
+SirionBV | July 24, 2011 at 4:38 AM1
+Hi I Can confirm that using the sparkfun level converter works with the LSM303DLH on a Arduino Uno and stuff
+
+https://picasaweb.google.com/lh/photo/AIiOfELj07YYfxNzte1jWfUyuJg5fbvJpQtmBljJuuk?feat=directlink
+
+ReidMeFirst | July 28, 2011 at 4:37 PM1
+Yay for shortcuts!
+
+I wonder if Sparkfun ever thinks about making these a little bigger, with terminal blocks for easy screwing and unscrewing of wires? I know that it sounds silly for logic level voltages, but it would make attaching my sensors (already buried in the ground) to the level shifter a bit easier. Soldering in the field isn't very much fun...

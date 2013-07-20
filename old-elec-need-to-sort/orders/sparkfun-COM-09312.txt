@@ -1,0 +1,20 @@
+Hall Effect Sensor
+
+sku: COM-09312  
+
+Description: The US1881 is an integrated Hall effect latched sensor. That's nice but what does it do? Holding a magnet near the sensor will cause the output pin to toggle. This makes for a robust presence sensor. A reed sensor also works nicely, but can be limited by the glass encapsulation and size. A hall effect sensor is much smaller, but can handle less current than a reed switch.
+
+The device includes an on-chip Hall voltage generator for magnetic sensing, a comparator that amplifies the Hall voltage, and a Schmitt trigger to provide switching hysteresis for noise rejection, and open-collector output. An internal bandgap regulator is used to provide temperature compensated supply voltage for internal circuits and allows a wide operating supply range.
+ 
+If a magnetic flux density larger than threshold Bop, DO is turned on (low). The output state is held until a magnetic flux density reversal falls below Brp causing DO to be turned off (high).
+
+Features:
+
+3.5V to 24V DC operation voltage
+Low current consumption
+Temperature compensation 
+Wide operating voltage range
+Open-Collector pre-driver
+50mA maximum sinking output current
+Reverse polarity protection
+Lead Free Package: TO-92

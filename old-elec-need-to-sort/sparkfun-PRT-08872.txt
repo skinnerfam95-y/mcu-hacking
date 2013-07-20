@@ -1,0 +1,18 @@
+Mic Preamp
+
+sku: PRT-08872  
+
+Description: This is a simple microphone preamplifier circuit for a wide range of microphone types, with good pre-amplification to attach to your larger stereo amplifier. This circuit is suitable for use with normal stereo amplifier line/CD/aux/tape inputs. The microphone preamplifier works great with guitar pickups, piezo disks, and can take both dynamic and electret microphone inputs (preamplifier provides power for electret microphone elements). This is a simple, easy to build circuit that is flexible and very handy when working with microphones and amplifiers.
+
+Board does not come assembled. You will need to purchase the components separately, check the related items at the bottom of the page for available components. Also, reference the schematic for the BOM.
+
+Features:
+
+Very simple one transistor circuit
+Amplification 35 dB, flat frequency response from 20 Hz to 20 kHz
+Low distortion but certainly not studio quality
+Interface dynamic or electret microphone to a line level audio input in HIFI amplifier or computer soundcard
+Power supply: 9V battery, takes less than 10 mA current
+No special protection circuits used
+No special electrical safety considerations
+Dimensions: 1"x1.5"x0.6"

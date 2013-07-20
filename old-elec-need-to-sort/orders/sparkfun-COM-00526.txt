@@ -1,0 +1,5 @@
+Voltage Regulator - 3.3V
+
+sku: COM-00526  
+
+Description: Basic voltage regulators in the TO-220 package. Perfect for low voltage 3.3V parts. These are the LD1117V33.

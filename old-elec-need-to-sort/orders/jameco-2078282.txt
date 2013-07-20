@@ -1,0 +1,14 @@
+No datasheet available
+
+SLOTTED OPTO-INTERRUPTER(4-PIN
+3MMGap,60mA(If)30V(cf)50mA(Ic)
+
+
+Part no. 2078282
+Manufacturer	SIEMENS CORPORATION
+Manufacturer no.	IRLA075
+
+Features:
+3mm gap between LED and detector
+Forward current: 60mA
+Collector-to-Emitter voltage: 30V	

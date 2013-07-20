@@ -1,0 +1,18 @@
+Temperature Sensor - LM335A
+
+sku: SEN-09438  
+
+Description: The LM335A is a very easy-to-use analog temperature sensor. The LM335A works like a Zener diode with a breakdown voltage proportional to absolute temperature at 10mV/°K. Hook up a resistor from 5V and GND, and the LM335A will output an analog voltage of 2.98V (298 Kelvin is 25C or room temperature).  The output of the sensor is linear, and when calibrated at 25°C the LM335A has typically less than 1°C error over a 100°C temperature range. The sensor can operate continuously from −40°C to 100°C.
+
+Calibration of the sensor requires a pot connected across the sensor, with the wiper of the potentiometer connected to the adjustment pin of the LM335.
+
+Comes in a through-hole, TO-92 package.
+
+Features:
+
+Directly calibrated in °Kelvin
+Operates from 400 μA to 5 mA
+Less than 1Ω dynamic impedance
+Easily calibrated
+Wide operating temperature range
+Low cost

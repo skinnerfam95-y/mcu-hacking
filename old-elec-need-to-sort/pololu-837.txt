@@ -1,0 +1,8 @@
+This IR demodulator from Vishay is a great general-purpose receiver for IR-based remote-control projects. It is optimized for data rates up to 4000 bits/s and bursts as short as six cycles, and the detectors epoxy package serves as an infrared filter that helps eliminate noise from visible light sources. The operating voltage range is broad enough for 5 V and 3.3 V logic, and unlike some receiver modules, the TSOP34156 allows for continuous reception. The modules output signal can be directly connected to a microcontroller; no additional external components are required.
+
+Specifications
+Operating Voltage: 2.7  5.5 V
+Carrier Frequency: 56 kHz
+Max data rate: 4000 bps
+Package: Through-hole with 0.1" lead spacing
+See the resources tab for the TSOP341 datasheet.

@@ -1,0 +1,19 @@
+74HC238 - 3 to 8 Line Decoder
+
+sku: COM-09577  
+
+Description: The M74HC238 is a high speed CMOS 3 to 8 line decoder. There are three binary select inputs (A, B, and C) which determine which one of the eight outputs (Y0-Y7) will go high. This chip has three enable inputs (G1, ~G2A, and ~G2B); when any enable pins are brought low (or high in G1's case), all output pins are pulled low.
+
+This is a great tool if you need to increase the number of outputs on your micrcontroller. For example, it's used in the 3x3x3 LED Cube to help an ATmega168 control the 27 LEDs.
+
+This device comes in a 16-pin DIP package.
+
+Features:
+
+High speed
+Wide operating voltage range (2 to 6VDC)
+Low power dissipation (~4µA)
+High noise immunity
+Symmetrical output impedance
+Balanced propagation delays
+Inputs equipped with protection circuits against static discharge and transient excess voltage

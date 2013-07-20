@@ -1,0 +1,112 @@
+'{$STAMP BS2}
+'Sample Code for the Parallax BS2 using the
+'Solarbotics CMD Motor driver
+'Rev 1.0
+'(c) Solarbotics Ltd., 2006
+'by Dan Gates June 12 2006
+
+'----------------------------- Program Description -------------------------
+
+' This CMD Sample program is for testing your CMD motor driver with a Basic
+' Stamp2 or compatable.
+' First we declare the motor connection pins in the "Pin Allocation category
+' and create a temp register for good measure.
+' Then in MAIN we turn OFF both motor enable lines for about 1 second and
+' Proceed to turn each motor on in the following sequence as if they were
+' driving a robot:
+' Forward, Backward, LEFT, and RIGHT each for a brief period of time (about
+' two and a half seconds).
+' A last we jump back to the beginning of the code and start over in a never
+' ending loop.
+'
+' This program assumes that you connect the CMD to the following BS2 pins;
+' Pin7 = E 1-2
+' Pin8 = E 3-4
+' Pin9 = L1
+' Pin10= L2
+' Pin11= L3
+' Pin12= L4
+' Be sure to connect at least 6v to the power input and connect the motors
+' to the outputs.
+
+
+'----------------------------- Pin Allocations -----------------------------
+
+'Motor control
+Enable_Right        CON 7        'Enable high, disable low
+Enable_Left         CON 8        'Enable high, disable low
+
+                             '------------ Direction Truth Table -------------
+                             'L1 & L3 | L2 & L4 | M1,M2,M3,M4 Outputs
+                             '--------|---------|-----------------------------
+M1a_Direction       CON 9     '  HIGH  |   HIGH  | Outputs = High (Motor Break)
+M1b_Direction       CON 10    '  LOW   |   LOW   | Outputs = LOW  (Motor Coast)
+M2a_Direction       CON 11    '  HIGH  |   LOW   | Current flows POS.(Direction 1)
+M2b_Direction       CON 12    '  LOW   |   HIGH  | Current flows Neg.(Direction 2)
+                             '------------------------------------------------
+
+
+Temp                VAR Word      'Temp register for manipulating bits
+
+'------------------------------ Start of main program ---------------------
+MAIN:
+   LOW Enable_Right               'Turn off Right Motor
+   LOW Enable_Left                'Turn off Left Motor
+   PAUSE 400                      'Wait 1 second
+   GOSUB FORWARD                  'Jump to Forward Subroutine
+   PAUSE 1000                     'Do it for 2.5 seconds
+   GOSUB BACKWARD                 'Jump to Backward Subroutine
+   PAUSE 1000                     'Do it for 2.5 seconds
+   GOSUB LEFT                     'Jump to Left Subroutine
+   PAUSE 1000                     'Do it for 2.5 seconds
+   GOSUB RIGHT                    'Jump to right subroutine
+   PAUSE 1000                     'Do it for 2.5 seconds
+
+GOTO MAIN                         'Go back and start again
+
+'----------------------------- Subroutines ---------------------------------
+FORWARD:
+   HIGH Enable_Right              'Turn on right motor
+   HIGH Enable_Left               'Turn on left motor
+   HIGH M1a_Direction             'This comination makes the right
+   LOW M1b_Direction              'motor turn clockwise
+   HIGH M2a_Direction             'This combination makes the left
+   LOW M2b_Direction              'motor turn Counterclockwise
+RETURN                            'return from this subroutine to the main
+                                  'program
+
+BACKWARD:
+   HIGH Enable_Right              'Make sure motors are still on
+   HIGH Enable_Left
+   LOW M1a_Direction              'This combination makes the right motor
+   HIGH M1b_Direction             'turn counterclockwise
+   LOW M2a_Direction              'This combination makes the left motor
+   HIGH M2b_Direction             'turn clockwise
+RETURN
+
+LEFT:
+   HIGH Enable_Right              'Make sure motors are still on
+   HIGH Enable_Left
+   LOW M1a_Direction              'This combination makes the right motor
+   HIGH M1b_Direction             'turn counterclockwise
+   HIGH M2a_Direction             'This combination makes the left motor
+   LOW M2b_Direction              'turn counterclockwise
+RETURN
+
+RIGHT:
+   HIGH Enable_Right             'Make sure motors are still on
+   HIGH Enable_Left              'This combination makes the right motor
+   HIGH M1a_Direction            'turn clockwise
+   LOW M1b_Direction             'This combination makes the left motor
+   LOW M2a_Direction             'turn clockwise
+   HIGH M2b_Direction
+RETURN
+
+GOTO main                        'We should never reach this point, but
+                                 'it's a good failsafe
+
+'--------------------------------------------------------------------------------
+' Now it's your turn to play around with this code and see if you can make it do
+' other cool stuff. Try using the "Break" mode to stop the motors between direction
+' changes.
+'---------------------------------------------------------------------------------

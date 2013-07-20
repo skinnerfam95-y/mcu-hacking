@@ -1,0 +1,6 @@
+EEPROM Serial-I2C 4K-Bit 2 x 256 x 8 5 Volt 8-Pin PDIP
+
+
+Part no. 108847
+Manufacturer	MAJOR BRANDS
+Manufacturer no.	AT24C04B-PU
